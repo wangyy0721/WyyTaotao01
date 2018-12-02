@@ -17,6 +17,11 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.taotao.portal.service.HttpClientApiService;
+
 
 public class httpclientTest {
 
@@ -74,4 +79,14 @@ public class httpclientTest {
 		}
 
 	}
+	
+	@Test
+	public void doGetPool() throws ClientProtocolException, IOException {
+		System.out.println("=============");
+		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
+		HttpClientApiService http = (HttpClientApiService) applicationContext.getBean("httpClientApiService");
+		String a = http.doGet("http://www.baidu.com/");
+		System.out.println("*****"+a);
+	}
+	
 }

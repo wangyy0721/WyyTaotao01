@@ -24,7 +24,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 		// 从cookie中取token
 		String token = CookieUtils.getCookieValue(request, "TT_TOKEN");
 		// 根据token换取用户信息，调用sso系统的接口。
-		TbUser user = userService.getUserByToken(token);
+		com.taotao.sso.query.bean.TbUser user = userService.getUserByToken(token);
 		// 取不到用户信息
 		if (null == user) {
 			// 跳转到登录页面，把用户请求的url作为参数传递给登录页面。
