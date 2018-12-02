@@ -1,12 +1,18 @@
 package com.taotao.sso.query.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-public class TbUser {
+public class TbUser implements Serializable{
 	
-    private Long id;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -4150910889211897681L;
+
+	private Long id;
 
     private String username;
     @JsonIgnore

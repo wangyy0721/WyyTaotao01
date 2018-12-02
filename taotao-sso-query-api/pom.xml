@@ -8,4 +8,11 @@
   <groupId>com.taotao.sso.query</groupId>
   <artifactId>taotao-sso-query-api</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <dependencies>
+		<dependency>
+			<groupId>com.taotao</groupId>
+			<artifactId>taotao-common</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+  </dependencies>
 </project>

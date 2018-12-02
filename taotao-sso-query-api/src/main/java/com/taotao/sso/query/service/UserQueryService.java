@@ -1,6 +1,6 @@
 package com.taotao.sso.query.service;
-import com.taotao.com.pojo.TaotaoResult;
+import com.taotao.sso.query.bean.TbUser;
 
 public interface UserQueryService {
-	public TaotaoResult getUserByToken(String token);
+	public TbUser getUserByToken(String token);
 }
