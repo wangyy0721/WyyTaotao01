@@ -20,13 +20,12 @@
 	<dubbo:protocol name="dubbo" port="20880" />
 
 	<!-- 将该接口暴露到dubbo中 -->
-	<dubbo:service interface="com.taotao.sso.query.api.UserQueryService"
-		ref="userQueryServiceImpl" />
+	<dubbo:service interface="com.taotao.sso.query.service.UserQueryService" ref="userQueryServiceImpl" />
 
 	<!-- 将具体的实现类加入到Spring容器中 -->
-	<bean id="userQueryServiceImpl" class="com.taotao.sso.query.service.UserQueryServiceImpl" />
+	<bean id="userQueryServiceImpl" class="com.taotao.sso.query.service.impl.UserQueryServiceImpl" />
 	
-	<dubbo:monitor protocol="registry"/>
+	<!-- <dubbo:monitor protocol="registry"/> -->
 
 
 </beans>

@@ -10,5 +10,4 @@ public interface JedisClient {
         long ttl(String key);//查看是否过期 -1 正常，-2过期
         long del(String key);//清空缓存
 		long hdel(String hkey, String key);	
-		
 }

@@ -25,17 +25,17 @@ public class UserQueryServiceImpl implements UserQueryService {
 	
 	
 	@Override
-	public TaotaoResult getUserByToken(String token) {
+	public TbUser getUserByToken(String token) {
 		
 		//根据token查询用户信息
 		String json = jedisClient.get(REDIS_USER_SESSION_KEY + ":" + token);
 		if(StringUtils.isBlank(json)){
-			return TaotaoResult.build(400, "此session已经过期请，重新登录");
+			return null;
 		}
 		// 更新过期时间
 		jedisClient.expire(REDIS_USER_SESSION_KEY + ":" + token, SSO_SESSION_EXPIRE);
 		// 返回用户信息
-		return TaotaoResult.ok(JsonUtils.jsonToPojo(json, TbUser.class));
+		return JsonUtils.jsonToPojo(json, TbUser.class);
 	}
 	
 	
