@@ -29,4 +29,11 @@ public class ItemController {
 		TaotaoResult result = itemService.createItem(item,desc);
 		return result;
 	}
+	
+	@RequestMapping(value="/item/update", method=RequestMethod.POST)
+	@ResponseBody
+	public TaotaoResult updateItem(TbItem item, String desc) throws Exception {
+		TaotaoResult result = itemService.updateItem(item, desc);
+		return result;
+	}
 }

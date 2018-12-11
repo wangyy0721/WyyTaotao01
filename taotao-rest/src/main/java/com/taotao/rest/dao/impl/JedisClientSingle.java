@@ -1,5 +1,7 @@
 package com.taotao.rest.dao.impl;
 
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.taotao.rest.dao.JedisClient;
@@ -84,6 +86,11 @@ public class JedisClientSingle implements JedisClient{
 		return result;
 	}
 
-	
+	@Override
+	public Set<String> keys(String hkey) {
+		Jedis jedis = jedisPool.getResource();
+		return jedis.keys(hkey);
+	}
+
 
 }

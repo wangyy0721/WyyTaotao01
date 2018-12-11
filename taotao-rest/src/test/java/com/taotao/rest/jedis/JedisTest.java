@@ -29,7 +29,19 @@ public class JedisTest {
 		jedis.close();
 	}
 	
-	
+	@Test
+	public void testJedisDelSingle() {
+		
+		//创建一个jedis的对象。
+		Jedis jedis = new Jedis("192.168.247.128", 6379);
+		 
+		//调用jedis对象的方法，方法名称和redis的命令一致。
+		//Long del = jedis.del("a");
+		Long del = jedis.hdel("a","1");
+		System.out.println(del);
+		
+		jedis.close();
+	}
 
 	
 	/**

@@ -100,12 +100,21 @@ public class UserController {
 	@ResponseBody
 	public Object getUserByToken(@PathVariable String token, String callback) {
 		TaotaoResult result = null;
-		try {
-			result = userService.getUserByToken(token);
-		} catch (Exception e) {
-			e.printStackTrace();
-			result = TaotaoResult.build(500, ExceptionUtil.getStackTrace(e));
-		}
+		/*
+		 * 2018.11.27  使用dubbo改造sso  此方法不用了   用dubbo服务
+		 * 起192.168.247.130  上的zookeeper  再起taotao-sso-query-service服务
+		 *新地址http://localhost:8087/user/token/041f9a33-8287-4e92-b141-325b3badd749
+		 */
+		result = TaotaoResult.build(500, "此方法不在使用，请使用dubbo");
+		
+		
+		
+//		try {
+//			result = userService.getUserByToken(token);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			result = TaotaoResult.build(500, ExceptionUtil.getStackTrace(e));
+//		}
 
 		// 判断是否为jsonp调用
 		if (StringUtils.isBlank(callback)) {

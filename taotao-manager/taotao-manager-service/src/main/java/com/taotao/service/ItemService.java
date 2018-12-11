@@ -9,4 +9,6 @@ public interface ItemService {
 	TbItem getItemById(long itemid);
 	EUDataGridResult getItemList(int page, int rows);
 	TaotaoResult createItem(TbItem tbItem,String desc) throws Exception;
+	TaotaoResult updateItem(TbItem tbItem,String desc) throws Exception;
+
 }

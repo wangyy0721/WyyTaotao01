@@ -1,5 +1,7 @@
 package com.taotao.rest.dao.impl;
 
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.taotao.rest.dao.JedisClient;
@@ -55,4 +57,11 @@ public class JedisClientCluster implements JedisClient {
 	public long hdel(String hkey, String key) {
 		return jedisCluster.hdel(key);
 	}
+
+	@Override
+	public Set<String> keys(String hkey) {
+		return jedisCluster.hkeys(hkey);
+	}
+
+	
 }

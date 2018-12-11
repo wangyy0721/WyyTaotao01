@@ -39,4 +39,16 @@ public class ItemController {
 		TaotaoResult result = itemService.getItemParam(itemId);
 		return result;
 	}
+	
+	/**
+	 * 后台修改商品信息删除redis中的缓存信息
+	 * http://localhost:8081/rest/item/delitemcase/152690887859666
+	 * @author wangyy 
+	 * @date 2018年11月24日
+	 */
+	@RequestMapping("/delitemcase/{itemId}")
+	@ResponseBody
+	public void delItemCase(@PathVariable Long itemId) {
+		 itemService.delItemCase(itemId);
+	}
 }

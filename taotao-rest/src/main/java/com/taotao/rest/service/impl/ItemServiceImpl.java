@@ -1,6 +1,7 @@
 package com.taotao.rest.service.impl;
 
 import java.util.List;
+import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -162,5 +163,23 @@ public class ItemServiceImpl implements ItemService {
 			return TaotaoResult.ok(paramItem);
 		}
 		return TaotaoResult.build(400, "无此商品规格");
+	}
+
+	/**
+	*后台修改商品信息后删除redis中的缓存信息
+	*此处仅仅示例删除商品的所有信息（即上面方法添加的redis缓存）
+	*只要以REDIS_ITEM_KEY + ":" + itemId开头的key就删掉
+	 */
+	@Override
+	public void delItemCase(long itemId) {
+		try {
+			//此处也可以不用写成这样（可以一个一个删）
+			Set<String> keys = jedisClient.keys(REDIS_ITEM_KEY + ":" + itemId + ":*");
+			for (String str : keys) {  
+				jedisClient.del(str);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
